@@ -1,4 +1,4 @@
-d3.json("samples.json", function (d) {
-    console.log(d);
-});
+// d3.json("samples.json", function (d) {
+//     console.log(d);
+// });
 console.log("I like Ash");
