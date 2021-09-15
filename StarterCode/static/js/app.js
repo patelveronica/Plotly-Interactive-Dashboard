@@ -1,4 +1,4 @@
-d3.json("samples.json", function (d) {
+d3.json("samples1.json", function (d) {
     console.log(d);
 });
 console.log("I like Ash and want to ");
