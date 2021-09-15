@@ -1,4 +1,3 @@
-d3.json("samples1.json", function (d) {
-    console.log(d);
-});
-console.log("-I LOVE YOU--");
+d3.json("samples.json").then(function(d) {
+    console.log(d)});
+console.log("-I love Data Science--");
