@@ -1,4 +1,4 @@
-d3.json("d/samples.json", function (d) {
+d3.json("./samples.json", function (d) {
     console.log(d);
 });
-console.log("-I Miss YOU--");
+console.log("-I love YOU--");
