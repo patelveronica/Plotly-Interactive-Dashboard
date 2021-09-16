@@ -1,15 +1,28 @@
 // read JSON file with d3
 d3.json("samples.json").then(function(data) {
     console.log(data.samples);
-    plotMetric(data)
+    let id ="940"
+
+    for (let i=0; i< data.samples.length; i++)
+    {
+        if (data.samples[i].id == id)
+        {
+            console.log('v1');
+            console.log(data.samples[i])
+        }
+    }  
+
+  //  plotMetric(data)
 });
+
 console.log('i like blue');
 
-function plotMetric(data){
+
+function plotMetric(xArray, yArray){
 
     let trace1 = {
-      x: data.samples.sample_values,
-      y: data.samples.otu_ids,
+      x: xArray,
+      y: yArray,
       type: "bar"
     }
     console.log(data.samples.sample_values);
