@@ -15,14 +15,15 @@ d3.json("samples.json").then(function(data) {
             console.log(data.samples[i].otu_ids[j]);
             xArry.push(data.samples[i].sample_values[j]);
             yArray.push(data.samples[i].otu_ids[j])
-            console.log(xArry)
-            console.log(yArray)
+           
           }
 
         }
+        console.log(xArry)
+        console.log(yArray)
     }  
 
-  //  plotMetric(data)
+   plotMetric(xArry,yArray )
 });
 
 console.log('i like blue');
@@ -34,14 +35,13 @@ function plotMetric(xArray, yArray){
       x: xArray,
       y: yArray,
       type: "bar"
-    }
-    console.log(data.samples.sample_values);
+    }     
   
     let plotdata = [trace1]
   
     // Pass metric to chart title
     let layout = {
-      title: `give title later`
+      title: `give title later Mujhe?`
     };
   
     Plotly.newPlot("plot",plotdata , layout);
