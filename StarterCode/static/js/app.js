@@ -34,14 +34,21 @@ function plotMetric(xArray, yArray){
     let trace1 = {
       x: xArray,
       y: yArray,
-      type: "bar"
+      type: "bar",
+      orientation: "h" 
     }     
   
     let plotdata = [trace1]
   
     // Pass metric to chart title
     let layout = {
-      title: `give title later Mujhe?`
+      title: `give title later Mujhe?`,
+      xaxis:{
+        autorange:'reversed'
+    },
+      yaxis:{
+         side:'right'
+    } 
     };
   
     Plotly.newPlot("plot",plotdata , layout);
