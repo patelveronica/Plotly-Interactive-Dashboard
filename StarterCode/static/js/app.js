@@ -43,11 +43,8 @@ function plotMetric(xArray, yArray){
     // Pass metric to chart title
     let layout = {
       title: `give title later Mujhe?`,
-      xaxis:{
-        autorange:'reversed'
-    },
       yaxis:{
-         side:'right'
+         side:'left'
     } 
     };
   
