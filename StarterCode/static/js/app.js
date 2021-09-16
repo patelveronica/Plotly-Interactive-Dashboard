@@ -11,6 +11,7 @@ function plotMetric(data){
       y: data.otu_ids,
       type: "bar"
     }
+    console.log(data.sample_values);
   
     let plotdata = [trace1]
   
