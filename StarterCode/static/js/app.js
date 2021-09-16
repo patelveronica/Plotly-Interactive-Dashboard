@@ -1,8 +1,9 @@
 // read JSON file with d3
 d3.json("samples.json").then(function(data) {
-    console.log(data);
+    console.log(data.samples);
     plotMetric(data)
 });
+console.log('i like blue');
 
 function plotMetric(data){
 
