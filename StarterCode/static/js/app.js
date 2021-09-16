@@ -1,6 +1,5 @@
-// read JSON file with d3
 d3.json("samples.json").then(function(data) {
-    console.log(data.samples);
+   // console.log(data.samples);
     let id ="940"
     let xArry = []
     let yArray= []
@@ -14,7 +13,10 @@ d3.json("samples.json").then(function(data) {
           for (let j=0; j < 10 ; j++)
           {
             console.log(data.samples[i].otu_ids[j]);
-            xArry.push(data.samples[i].otu_ids[j])
+            xArry.push(data.samples[i].sample_values[j]);
+            yArray.push(data.samples[i].otu_ids[j])
+            console.log(xArry)
+            console.log(yArray)
           }
 
         }
@@ -22,6 +24,7 @@ d3.json("samples.json").then(function(data) {
 
   //  plotMetric(data)
 });
+
 console.log('i like blue');
 
 
