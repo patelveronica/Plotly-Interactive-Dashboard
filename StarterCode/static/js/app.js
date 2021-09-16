@@ -7,11 +7,11 @@ d3.json("samples.json").then(function(data) {
 function plotMetric(data){
 
     let trace1 = {
-      x: data.sample_values,
-      y: data.otu_ids,
+      x: data.samples.sample_values,
+      y: data.samples.otu_ids,
       type: "bar"
     }
-    console.log(data.sample_values);
+    console.log(data.samples.sample_values);
   
     let plotdata = [trace1]
   
