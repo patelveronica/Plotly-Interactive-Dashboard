@@ -1,31 +1,7 @@
 d3.json("samples.json").then(function(data) {
    console.log(data.samples)
    });
-console.log("-I MISS YOU--");
-function OTUs(otusdata) {
-    return otusdata.otu_ids;
-};
-console.log(OTUs);
 
-let toptenotus = data.sample.filter(OTUs);
-console.log(toptenotus);
-
-let trace1= {
-    x: toptenotus.map(row=> row.smapl_values),
-    y: toptenotus.map(row=> row.out_ids),
-    type: "bar",
-    orientation: "h"
-};
-// Data trace array
-let traceData = [trace1];
-
-// Apply title to the layout
-let layout = {
-  title: "Top 10 OTUs Data"
-};
-
-// Render the plot to the div tag with id "plot"
-Plotly.newPlot("plot", traceData, layout);
    
    
    
