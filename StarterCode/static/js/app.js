@@ -1,8 +1,8 @@
 d3.json("samples.json").then(function(data) {
-   console.log(data.samples)
+   Samples = (data.samples)
    });
 
-let sortedotus = data.samples.sort((a,b) => b.otu_ids - a.otu_ids );
+let sortedotus = Samples.sort((a,b) => b.otu_ids - a.otu_ids );
 console.log(sortedotus);
 
 sliceData = sortedotus.slice(0,10);
