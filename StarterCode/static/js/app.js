@@ -2,10 +2,10 @@ d3.json("samples.json").then(function(data) {
    console.log(data.samples)
    });
 
-let sortedotus = data.samples.sort(a,b) => b.otu_ids - a.otu_ids 
+let sortedotus = data.samples.sort((a,b) => b.otu_ids - a.otu_ids );
 console.log(sortedotus);
 
-sliceData = sortedbyotus.slice(0,10);
+sliceData = sortedotus.slice(0,10);
 
 reverseData = sliceData.reverse();
 
@@ -18,7 +18,7 @@ let trace1 = {
   type: "bar",
   orientation: "h"
 };
-/ Data array
+// Data array
 // `data` has already been defined, so we must choose a new name here:
 let traceData = [trace1];
 
