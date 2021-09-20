@@ -1,10 +1,38 @@
 d3.json("samples.json").then(function(data) {
    console.log(data.samples)
    });
-   for (let i = 0; i< data.samples.lenght; i++);
-      return data.samples[i];
-   console.log(data.samples[i]);
-   
+
+let sortedotus = data.samples.sort(a,b) => b.otu_ids - a.otu_ids 
+console.log(sortedotus);
+
+sliceData = sortedbyotus.slice(0,10);
+
+reverseData = sliceData.reverse();
+
+   // Trace1 for the Greek Data
+let trace1 = {
+  x: reversedData.map(object => object.sampl_values),
+  y: reversedData.map(object => object.otu_ids),
+  text: reversedData.map(object => object.otu_lables),
+  name: "Greek",
+  type: "bar",
+  orientation: "h"
+};
+/ Data array
+// `data` has already been defined, so we must choose a new name here:
+let traceData = [trace1];
+
+// Apply a title to the layout
+let layout = {
+  title: "New Greek gods search results",
+  margin: {
+    l: 100,
+    r: 100,
+    t: 100,
+    b: 100
+  }
+};
+Plotly.newPlot("plot", traceData, layout);
    
    
    
