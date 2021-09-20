@@ -1,10 +1,9 @@
 d3.json("samples.json").then(function(data) {
-   console.log(data.samples)
+  var newdata = data.samples;
+   console.log(newdata);
 
 //  filter sample values by ID
-var findId = data.samples.filter(object.id == id);
-let otudata = findId[0];
-console.log(otudata);
+
 
 // get top 10 records
 var samplesvalues = samples.sample_value.slice(0, 10).reverse();
