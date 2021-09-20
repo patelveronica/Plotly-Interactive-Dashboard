@@ -1,27 +1,9 @@
 d3.json("samples.json").then(function(data) {
    console.log(data.samples)
    });
-var sample = Object.values(samples.sample);
-console.log(sample);
-
-var labels = Object.keys(samples.sample.otu_labels);
-console.log(labels);
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+   for (let i = 0; i< data.samples.lenght; i++);
+      return data.samples[i];
+   console.log(data.samples[i]);
    
    
    
