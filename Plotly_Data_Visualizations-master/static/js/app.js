@@ -2,35 +2,32 @@
 function buildCharts(selectedPatientID) {
     d3.json("samples.json").then(data => {
         console.log(data)
+        // getting all MetaData and Samples
         var metadata = data.metadata
         var samplevalues = data.samples
+        // filter for first id
         var filteredmetadata = metadata.filter(patient => patient.id == selectedPatientID)[0]
         var filteredsample = samplevalues.filter(patient => patient.id == selectedPatientID)[0]
         console.log(filteredsample)
-        // Plotly.newPlot("barDiv", barData, barLayout)
+
+        // Plot Bar Graph
         //* Use `sample_values` as the values for the bar chart.
         // * Use `otu_ids` as the labels for the bar chart.
         // * Use `otu_labels` as the hovertext for the chart.
+        // convert the otu_id into string
         var trace1 = {
             x: filteredsample.sample_values.slice(0, 10).reverse(),
-            y: filteredsample.otu_ids.slice(0, 10).map(otu_id => `OTU #${otu_id}`).reverse(),
-            marker: {
-                // color: ['rgba(204,204,204,1)', 'rgba(222,45,38,0.8)', 'rgba(204,204,204,1)', 'rgba(204,204,204,1)', 'rgba(204,204,204,1)']
-            },
+            y: filteredsample.otu_ids.slice(0, 10).map(otu_id => `OTU #${otu_id}`).reverse(),           
             type: 'bar',
             orientation: 'h'
-
         };
-
         var data = [trace1];
-
         var layout = {
-            title: 'Least Used Feature'
+            title: 'Top 10 Bacteria Cultures Found'
         };
-
         Plotly.newPlot('barDiv', data, layout);
 
-        // Plotly.newPlot("bubbleDiv", bubbleData, bubbleLayout)
+        // Plot Bubble chart
         // * Use `otu_ids` for the x values.
         // * Use `sample_values` for the y values.        
         // * Use `sample_values` for the marker size.        
@@ -45,21 +42,18 @@ function buildCharts(selectedPatientID) {
                 color: filteredsample.otu_ids,
                 colorscale: "Earth"                
             },
-            text: filteredsample.otu_labels
-            
+            text: filteredsample.otu_labels            
         };
-
         var data = [trace1];
-
         var layout = {
-            title: 'Marker Size',
+            title: 'OTU_IDS',
             showlegend: false,
             height: 600,
-            width: 600
+            width: 1000
         };
-
         Plotly.newPlot('bubbleDiv', data, layout);
-        // Plotly.newPlot("gaugeDiv", gaugeData, gaugeLayout)       
+
+        // BONUS - Plot Gauge chart      
         var data = [
             {
                 domain: { x: [0, 1], y: [0, 1] },
@@ -67,23 +61,25 @@ function buildCharts(selectedPatientID) {
                 title: { text: "Weekly Belly Button Washing Frequency" },
                 type: "indicator",
                 mode: "gauge+number",
-                delta: { reference: 400 },
+                delta: { reference: 400, increasing: { color: "RebeccaPurple" } },
                 gauge: { axis: { range: [null, 10] } }
             }
         ];
-
         var layout = { width: 600, height: 400 };
-        Plotly.newPlot('gaugeDiv', data, layout);
-
+        Plotly.newPlot('gaugeDiv', data, layout, {responsive:true});
     })
 };
 
-// FUNCTION #2 of 5
+// FUNCTION #2 of 5 - Populate demographic information
 function populateDemographicInfo(selectedPatientID) {
-    var demographicInfoBox = d3.select("#sample-metadata");
     d3.json("samples.json").then(data => {
-        console.log(data)
-        // ADD APPROXIMATELY 3-6 LINE OF CODE
+        var metadata = data.metadata;
+        var filteredmetadata = metadata.filter(patient => patient.id == selectedPatientID)[0];
+        var panel = d3.select("#sample-metadata");
+        panel.html("");
+        Object.entries(filteredmetadata).forEach(([key, value]) => {
+            panel.append("h5").text(`${key}: ${value}`);
+        });
     })
 }
 
@@ -94,7 +90,7 @@ function optionChanged(selectedPatientID) {
     populateDemographicInfo(selectedPatientID);
 }
 
-// FUNCTION #4 of 5
+// FUNCTION #4 of 5 - Dropdown element
 function populateDropdown() {
     var dropdown = d3.select("#selDataset")
     d3.json("samples.json").then(data => {
